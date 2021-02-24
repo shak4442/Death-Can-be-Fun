@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Vector2 speed = new Vector2(10, 10);
+    public Transform spawnpoint;
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        //detects collision with coin and adds score
         if (col.gameObject.tag == "Coin"){
             Score.scoreAmount ++;
             Destroy(col.gameObject);
@@ -15,12 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (col.gameObject.tag == "Enemy"){
             Deaths.deathAmount ++;
+            Respawn();
         }
-        
+    }
+    
+    public void Respawn() 
+    {
+        this.transform.position = spawnpoint.position;
     }
 
     void Update()
     {
+        //movement from inputs
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
@@ -29,5 +37,6 @@ public class PlayerMovement : MonoBehaviour
         movement *= Time.deltaTime;
 
         transform.Translate(movement);
+
     }
 }
