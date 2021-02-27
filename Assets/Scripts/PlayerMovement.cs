@@ -4,7 +4,32 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
     public Vector2 speed = new Vector2(10, 10);
+=======
+    public Vector2 speed = new Vector2(7, 7);
+    public Transform spawnpoint;
+    Collider2D play;
+
+    void Start()
+    {
+        play = GetComponent<Collider2D>();
+    }
+
+    void Update()
+    {
+        //movement from inputs
+        float inputX = Input.GetAxis("Horizontal");
+        float inputY = Input.GetAxis("Vertical");
+
+        Vector2 movement = new Vector2(speed.x * inputX, speed.y * inputY);
+
+        movement *= Time.deltaTime;
+
+        transform.Translate(movement);
+
+    }
+>>>>>>> Stashed changes:Assets/Scripts/Player.cs
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -17,10 +42,41 @@ public class PlayerMovement : MonoBehaviour
             Deaths.deathAmount ++;
         }
         
+<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
+=======
+        if (col.gameObject.tag == "P-Speed"){
+            
+            Destroy(col.gameObject);
+            StopCoroutine(SpeedUp());  
+            StartCoroutine(SpeedUp());
+        }
+
+        if (col.gameObject.tag == "P-Slow"){
+            
+            Destroy(col.gameObject);
+            StopCoroutine(SpeedDown());  
+            StartCoroutine(SpeedDown());
+        }
+
+        if (col.gameObject.tag == "P-Invulnerable"){
+            
+            Destroy(col.gameObject);
+            StopCoroutine(Invulnerable());  
+            StartCoroutine(Invulnerable());
+        }
     }
 
-    void Update()
+    IEnumerator SpeedUp()
     {
+        speed = speed *1.7f;
+        yield return new WaitForSeconds(5f);
+        speed = speed /1.7f;
+>>>>>>> Stashed changes:Assets/Scripts/Player.cs
+    }
+
+    IEnumerator SpeedDown()
+    {
+<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
@@ -29,5 +85,22 @@ public class PlayerMovement : MonoBehaviour
         movement *= Time.deltaTime;
 
         transform.Translate(movement);
+=======
+        speed = speed /1.5f;
+        yield return new WaitForSeconds(5f);
+        speed = speed *1.5f;
+    }
+
+    IEnumerator Invulnerable()
+    {
+        play.enabled = !play.enabled;
+        yield return new WaitForSeconds(5f);
+        play.enabled = !play.enabled;
+    }
+    
+    public void Respawn() 
+    {
+        this.transform.position = spawnpoint.position;
+>>>>>>> Stashed changes:Assets/Scripts/Player.cs
     }
 }

@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Coin
   - Enemy
+<<<<<<< Updated upstream
+=======
+  - SpawnPoint
+  - P-Speed
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
