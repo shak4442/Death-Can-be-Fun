@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
-    public Vector2 speed = new Vector2(10, 10);
-=======
     public Vector2 speed = new Vector2(7, 7);
     public Transform spawnpoint;
     Collider2D play;
@@ -29,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(movement);
 
     }
->>>>>>> Stashed changes:Assets/Scripts/Player.cs
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -41,9 +37,7 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "Enemy"){
             Deaths.deathAmount ++;
         }
-        
-<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
-=======
+
         if (col.gameObject.tag == "P-Speed"){
             
             Destroy(col.gameObject);
@@ -71,21 +65,9 @@ public class PlayerMovement : MonoBehaviour
         speed = speed *1.7f;
         yield return new WaitForSeconds(5f);
         speed = speed /1.7f;
->>>>>>> Stashed changes:Assets/Scripts/Player.cs
-    }
-
+        
     IEnumerator SpeedDown()
     {
-<<<<<<< Updated upstream:Assets/Scripts/PlayerMovement.cs
-        float inputX = Input.GetAxis("Horizontal");
-        float inputY = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(speed.x * inputX, speed.y * inputY, 0);
-
-        movement *= Time.deltaTime;
-
-        transform.Translate(movement);
-=======
         speed = speed /1.5f;
         yield return new WaitForSeconds(5f);
         speed = speed *1.5f;
@@ -101,6 +83,5 @@ public class PlayerMovement : MonoBehaviour
     public void Respawn() 
     {
         this.transform.position = spawnpoint.position;
->>>>>>> Stashed changes:Assets/Scripts/Player.cs
     }
 }
