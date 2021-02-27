@@ -7,6 +7,9 @@ TagManager:
   - Coin
   - Enemy
   - SpawnPoint
+  - P-Speed
+  - P-Slow
+  - P-Invulnerable
   layers:
   - Default
   - TransparentFX
