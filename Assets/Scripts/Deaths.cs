@@ -10,12 +10,14 @@ public class Deaths : MonoBehaviour
 
     void Start()
     {
+        //get text component from canvas
         deathText = GetComponent<Text>();
         deathAmount = 0;
     }
 
     void Update()
     {
+        //updates text to add deaths
         deathText.text = "Deaths = " + deathAmount;
     }
 }

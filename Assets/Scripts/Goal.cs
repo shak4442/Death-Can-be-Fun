@@ -19,7 +19,7 @@ public class Goal : MonoBehaviour
         else {
             Debug.Log("does not exists");
             End.color = new Color (0, 1, 0, 0.5f); 
-            
+
         }
     }
 }
