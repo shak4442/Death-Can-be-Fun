@@ -10,6 +10,7 @@ TagManager:
   - P-Speed
   - P-Slow
   - P-Invulnerable
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
