@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+<<<<<<< Updated upstream
     public Vector2 speed = new Vector2(10, 10);
+=======
+    public Vector2 speed = new Vector2(7, 7);
+>>>>>>> Stashed changes
     public Transform spawnpoint;
     Collider2D play;
 
@@ -13,9 +17,28 @@ public class Player : MonoBehaviour
         play = GetComponent<Collider2D>();
     }
 
+<<<<<<< Updated upstream
     void OnCollisionEnter2D(Collision2D col)
     {
         //detects collision with coin and adds score
+=======
+    void Update()
+    {
+        //movement from inputs
+        float inputX = Input.GetAxis("Horizontal");
+        float inputY = Input.GetAxis("Vertical");
+
+        Vector2 movement = new Vector2(speed.x * inputX, speed.y * inputY);
+
+        movement *= Time.deltaTime;
+
+        transform.Translate(movement);
+
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+>>>>>>> Stashed changes
         if (col.gameObject.tag == "Coin"){
             Score.scoreAmount ++;
             Destroy(col.gameObject);
@@ -25,6 +48,10 @@ public class Player : MonoBehaviour
             Deaths.deathAmount ++;
             Respawn();
         }
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
         if (col.gameObject.tag == "P-Speed"){
             
             Destroy(col.gameObject);
@@ -52,7 +79,10 @@ public class Player : MonoBehaviour
         speed = speed *1.7f;
         yield return new WaitForSeconds(5f);
         speed = speed /1.7f;
+<<<<<<< Updated upstream
         
+=======
+>>>>>>> Stashed changes
     }
     IEnumerator SpeedDown()
     {
@@ -72,6 +102,7 @@ public class Player : MonoBehaviour
     {
         this.transform.position = spawnpoint.position;
     }
+<<<<<<< Updated upstream
 
     void Update()
     {
@@ -86,4 +117,6 @@ public class Player : MonoBehaviour
         transform.Translate(movement);
 
     }
+=======
+>>>>>>> Stashed changes
 }
